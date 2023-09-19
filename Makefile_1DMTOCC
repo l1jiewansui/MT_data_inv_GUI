@@ -1,0 +1,38 @@
+# Makefile for processing MT data.
+# Written by Yang Bo, IGG, CUG, 2013/06/04.
+#
+.SECONDARY:
+#
+# set default parameters.
+#
+site=
+inv=
+mfile=
+dfile=
+nlayer=20
+maxit=10
+tol=1.2
+mode=3
+noise=5
+# read the user defined parameters.
+include mk.para
+
+all: $(inv)
+
+$(inv): $(site).ztab startup $(dfile) $(mfile)
+	mt1docc;
+	iter=`ls ITER* | sed 's/ITER//' | sort | tail -1`; \
+	pltocciter.sh $(site) $$iter; \
+	cp $(site).png ..
+
+startup:
+	mkstartupmt1docc.sh $(site) $(nlayer) $(mfile) $(dfile) $(maxit) $(tol) 1
+
+$(mfile): $(site).ztab
+	mkmodmt1docc.sh $(site).mod $< $(nlayer) $(mode)
+
+$(dfile): $(site).ztab
+	mkdatmt1docc.sh $(site).dat $< $(mode) $(noise)
+
+# Add the target to output the image to the specified path
+output_image: $(site).png
