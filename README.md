@@ -1,7 +1,7 @@
 #  MT_data_inv_GUI(GUI for Multiple Inversion Methods of MT Data)
 
 ### Introduction
-> 这是2023年春夏学期课程地球电磁学的期末作业（written by 孟宇航），感谢杨波老师的悉心指导和学长的作业为我提供的思路。
+> 这是2023年ZJU春夏学期课程地球电磁学的期末作业（written by Meng Yuhang），感谢Yang Bo老师的悉心指导和学长的作业为我提供的思路。
 
 ##### 程序定位
 
